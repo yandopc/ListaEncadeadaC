@@ -55,11 +55,6 @@ void imprime (List *p) {
    imprime (p->prox);
 }
 
-void removeIni (List *p) {
-
-
-
-}
 
 
 
