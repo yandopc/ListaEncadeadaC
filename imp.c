@@ -54,8 +54,3 @@ void imprime (List *p) {
    printf("%d\n", p->cel);
    imprime (p->prox);
 }
-
-
-
-
-
