@@ -10,5 +10,7 @@ int main () {
    insere(20);
    insere(30);
    imprime(a);
+   removeFim(a);
+   imprime(a);
 
 }

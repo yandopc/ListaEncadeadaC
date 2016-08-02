@@ -8,3 +8,5 @@ void insere (int b);
 
 void imprime (List *p);
 
+void removeFim (List *p);
+
