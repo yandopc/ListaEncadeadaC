@@ -7,10 +7,8 @@
  * para o próximo item da lista. */
 
 struct encad {
-
    int cel;
    struct encad *prox;
-   
 };
 
 /* Variável que guarda a posição do último elemento
@@ -23,26 +21,22 @@ List *fim;
  * e retorna um tipo List. */
 
 List *init (void) {
-
    List *new;
    new = malloc (sizeof(List));
    new->prox = NULL;
    fim = new;
    return new;
-   
 }
 
 /* Função que insere um item no fim da lista. Recebe
  * como parâmetro o valor a ser inserido na lista. */
 
 void insere (int b) {
-
    List *new = malloc (sizeof(List));
    fim->prox = new;
    new->cel = b;
    new->prox = NULL;
    fim = new;
-
 }
 
 /* Função recursiva que imprime os itens da lista e
@@ -50,13 +44,10 @@ void insere (int b) {
  * lista. */
 
 void imprime (List *p) {
-
    if (p->prox == NULL) {
-   
       printf("%d\n", p->cel);
       return;
    }
-
    printf("%d\n", p->cel);
    imprime (p->prox);
 }
@@ -66,9 +57,7 @@ void imprime (List *p) {
  * início da lista. */
 
 void removeFim (List *p) { 
-  
    if (p->prox->prox == NULL) { 
-        
       List *aux = fim;
       p->prox = NULL;
       fim = p->prox;
@@ -76,6 +65,5 @@ void removeFim (List *p) {
       free(aux);
       return;     
    }      
-   
    removeFim (p->prox);   
 }
