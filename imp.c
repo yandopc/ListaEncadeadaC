@@ -2,24 +2,6 @@
 #include <stdlib.h>
 #include "encad.h"
 
-/* Estrutura de lista Encadeada. Uma variável com o
- * tipo de dado que a lista armazena e um ponteiro
- * para o próximo item da lista. */
-
-struct encad {
-   int cel;
-   struct encad *prox;
-};
-
-/* Variável que guarda a posição do último elemento
- * inserido na lista, evitando o uso de estruturas de
- * repetição nas funções. */
-
-List *fim;
-
-/* Função de início da lista, não recebe parâmetros
- * e retorna um tipo List. */
-
 List *init (void) {
    List *new;
    new = malloc (sizeof(List));
@@ -27,9 +9,6 @@ List *init (void) {
    fim = new;
    return new;
 }
-
-/* Função que insere um item no fim da lista. Recebe
- * como parâmetro o valor a ser inserido na lista. */
 
 void insere (int b) {
    List *new = malloc (sizeof(List));
@@ -39,31 +18,59 @@ void insere (int b) {
    fim = new;
 }
 
-/* Função recursiva que imprime os itens da lista e
- * recebe como parâmetro a variável com o início da
- * lista. */
-
-void imprime (List *p) {
+void imprimeR (List *p) {
    if (p->prox == NULL) {
-      printf("%d\n", p->cel);
+      printf("%d ", p->cel);
       return;
    }
-   printf("%d\n", p->cel);
+   printf("%d ", p->cel);
    imprime (p->prox);
 }
-
-/* Função recursiva que remove o último elemento da
- * lista. Recebe como parâmetro uma variável com o 
- * início da lista. */
 
 void removeFim (List *p) { 
    if (p->prox->prox == NULL) { 
       List *aux = fim;
       p->prox = NULL;
       fim = p->prox;
-      
       free(aux);
       return;     
    }      
    removeFim (p->prox);   
 }
+
+void removeIni (List *p) {
+   List *aux = p->prox;
+   p->prox = p->prox->prox;
+   free(aux);
+}
+
+void insereIni (List *p, int n) {
+   List *new = malloc (sizeof(List));
+   new->cel = n;
+   new->prox = p->prox;
+   p->prox = new;
+}
+
+void imprime (List *p) {
+   printf("[ ");
+   p = p->prox;
+   while (p->prox != NULL) {
+      printf("%d ", p->cel);
+      p = p->prox;
+   }
+   printf("]\n");
+}
+
+void insereIdc (int n, int a, List *p) {
+   for (int i = 0; i < n-1; i++, p = p->prox);
+   List *new = malloc(sizeof(List));
+   new->cel = a; new->prox = p->prox;
+   p->prox = new;
+}
+
+void removeIdc (int n, List *p) {
+   for (int i = 0; i < n-1; i++, p = p->prox);
+   List *aux = p->prox; p->prox = p->prox->prox;
+   free(aux);
+}
+
