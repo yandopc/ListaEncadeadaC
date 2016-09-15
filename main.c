@@ -16,5 +16,9 @@ int main () {
    imprime(a);
    removeIdc(3,a);
    imprime(a);
+   printf("%d\n",busca(a, 40));
+   limpa(a);
+   imprime(a);
+
    printf("\n");
 }

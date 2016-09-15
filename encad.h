@@ -18,3 +18,6 @@ void insereIdc (int n, int a, List *p);
 void removeIni (List *p);
 void insereIni (List *p, int n);
 void removeIdc (int n, List *p);
+void limpa (List *p);
+int busca (List *p, int n);
+

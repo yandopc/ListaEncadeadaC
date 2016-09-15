@@ -64,13 +64,30 @@ void imprime (List *p) {
 void insereIdc (int n, int a, List *p) {
    for (int i = 0; i < n-1; i++, p = p->prox);
    List *new = malloc(sizeof(List));
-   new->cel = a; new->prox = p->prox;
+   new->cel = a; 
+   new->prox = p->prox;
    p->prox = new;
 }
 
 void removeIdc (int n, List *p) {
    for (int i = 0; i < n-1; i++, p = p->prox);
-   List *aux = p->prox; p->prox = p->prox->prox;
+   List *aux = p->prox; 
+   p->prox = p->prox->prox;
    free(aux);
+}
+
+void limpa (List *p) {
+   List *a; p = p->prox;
+   while (p->prox != NULL) {
+      removeIni(p);
+   }
+}
+
+int busca (List *p, int n) {
+   while (p->prox != NULL) {
+      if (p->cel == n) return p->cel;
+      p = p->prox;
+   }
+   return -1;
 }
 
